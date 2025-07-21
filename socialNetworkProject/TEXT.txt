@@ -1,0 +1,10 @@
+always put type module in package.json after running npm init -y cmd in powershell
+
+
+
+steps to initalize a project
+1. npm init -y => this will generate a package.json file => add type moodule in init
+2. create backend folder
+3. server.js and make folder src and app.js in in
+4. download the packages , it will store in package-lock.json()
+5. make .gitignore file in root and .env file in backend(generally .gitignore is made where git is initalize and it is the root(socialnetworkproject))
