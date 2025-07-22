@@ -8,3 +8,14 @@ steps to initalize a project
 3. server.js and make folder src and app.js in in
 4. download the packages , it will store in package-lock.json()
 5. make .gitignore file in root and .env file in backend(generally .gitignore is made where git is initalize and it is the root(socialnetworkproject))
+
+
+
+
+
+
+
+DOUBT:
+1. jab bohut  sare router.use wala middleware banaynge tho kuch routes ke 2 middle ware chlenge jaise default wala aur coustome tho time aur efficiency ka issue hoga?
+2. Imagekit ko kese pata ke image ane wale ha ya video ya kuch aur
+A2. wo file ka MIME type check krte haan jaise .mp3 song ka MIME type hoga audio/mp3
