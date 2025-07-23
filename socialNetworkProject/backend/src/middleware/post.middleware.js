@@ -12,7 +12,7 @@ export const userMiddleware= (req, res, next) => {
     }
     try{
         let decoded = jwt.verify(token, config.JWT_SECRET)
-        console.log(decoded)
+        // console.log(decoded)
         req.user = decoded;// request object ma user naam ke field add krde // response object sirf data user ko dikhane ka kaam ata ha
         next();
 
