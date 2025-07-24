@@ -1,7 +1,7 @@
 import uploadImage from "../services/storage.service.js";
 import { createPost } from "../DAO/post.dao.js";
 import {v4 as v4Id } from "uuid";
-import { generateCaption } from "../services/caption.service.js";
+import { generateCaption } from "../services/ai.service.js";
 
 export const uploadPost = async ( req , res )=>{
  
