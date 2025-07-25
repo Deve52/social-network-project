@@ -15,19 +15,6 @@ export const checkPost = async (postId) => {
     })
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const findOnePost = async (post)=>{
  return await postModel.findOne({
           _id : post._id

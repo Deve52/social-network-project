@@ -1,5 +1,6 @@
 import likesModel from "../models/likes.model.js";
 
+
 export const createLike = async (data) => {
     let { userId, postId } = data;
 

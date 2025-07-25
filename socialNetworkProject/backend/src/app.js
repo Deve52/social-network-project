@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth.routes.js';
 import postRoutes from './routes/post.routes.js';
 import userRoutes from "./routes/user.route.js"
+import './Listeners/like.listener.js'  // this tells our application that there is somithing known as  eventlisteners and it has it's own emits and ons, when you see any calls please direct it to this file
 
 let app = express();
 

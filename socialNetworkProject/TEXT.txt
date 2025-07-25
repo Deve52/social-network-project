@@ -1,5 +1,14 @@
-always put type module in package.json after running npm init -y cmd in powershell
 
+
+{{{{{{
+    
+    According to REST API design principles, an action should be associated with the resource it is affecting.
+    An API should be clear and self-documenting.
+
+}}}}}}
+
+
+always put type module in package.json after running npm init -y cmd in powershell
 
 
 steps to initalize a project
@@ -16,8 +25,14 @@ steps to initalize a project
 
 
 DOUBT:
-1. jab bohut  sare router.use wala middleware banaynge tho kuch routes ke 2 middle ware chlenge jaise default wala aur coustome tho time aur efficiency ka issue hoga?
-2. Imagekit ko kese pata ke image ane wale ha ya video ya kuch aur
+Q1. jab bohut  sare router.use wala middleware banaynge tho kuch routes ke 2 middle ware chlenge jaise default    wala aur coustome tho time aur efficiency ka issue hoga?
+
+A1. nahi ham custom ko he use krenge since usma token validation and verification ka code ha aur usma db req ka code bhi ha jo ke thoda unefficient ha(bemtlb req honge db pr) and it's unsecure too so we will use redis which is like cache memory thing shit.
+
+
+
+Q2. Imagekit ko kese pata ke image ane wale ha ya video ya kuch aur
+
 A2. wo file ka MIME type check krte haan jaise .mp3 song ka MIME type hoga audio/mp3
 
 
