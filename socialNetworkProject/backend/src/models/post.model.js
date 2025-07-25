@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema({
+    //_id
     imageUrl:{
         type: String,
         required: true,
@@ -18,7 +19,13 @@ const postSchema = new mongoose.Schema({
     mentions:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"user"
-    }]
+    }],
+    
+    likeCount: {
+        type: Number,
+        default : 0
+
+    }
 
 })
 

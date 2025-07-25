@@ -19,3 +19,16 @@ DOUBT:
 1. jab bohut  sare router.use wala middleware banaynge tho kuch routes ke 2 middle ware chlenge jaise default wala aur coustome tho time aur efficiency ka issue hoga?
 2. Imagekit ko kese pata ke image ane wale ha ya video ya kuch aur
 A2. wo file ka MIME type check krte haan jaise .mp3 song ka MIME type hoga audio/mp3
+
+
+
+
+
+
+
+
+
+logic
+//req.body - when you pass the data in the body(alot of data generally authentication)
+//req.query - when you pass the parameter!
+//req.params - when you pass a specific data with the url like id or something!

@@ -16,7 +16,7 @@ let aiCaption = await generateCaption(req.file)
          });
     }
     // console.log(req.user.id)
-    let userId= req.user.id;// middleware se token ke through jo user mila usma uki id "id" ma save ha na ke "_id".
+    let userId= req.user._id;// middleware se token ke through jo user mila usma uki id "id" ma save ha na ke "_id" maine he id ma save kiya tha .
     
     let post = await createPost(userId,aiCaption,mentions,file.url)
 

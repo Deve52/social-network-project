@@ -17,7 +17,7 @@ export const registerController = async(req, res) => {
     let hashpassword = await bcrypt.hash(password, 10); // Hashing the password with a salt rounds of 10
     let userData = await createUser(username, email, hashpassword); // Create a new user with the hashed password
 
-    let token = jwt.sign({id:userData._id},config.JWT_SECRET ,{expiresIn: '1h'}); // Creating a JWT token with the user ID and secret key
+    let token = jwt.sign({_id:userData._id},config.JWT_SECRET ,{expiresIn: '1h'}); // Creating a JWT token with the user ID and secret key
      res.cookie("token",token,{
         httpOnly:true, // Making the cookie HTTP only to prevent client-side access
         samesite:true, // Preventing CSRF attacks
@@ -56,7 +56,7 @@ export const loginController= async(req, res) => {
             })
          }
          
-        let token = jwt.sign({id:user._id},config.JWT_SECRET ,{expiresIn: '1h'}); // Creating a JWT token with the user ID and secret key
+        let token = jwt.sign({_id:user._id},config.JWT_SECRET ,{expiresIn: '1h'}); // Creating a JWT token with the user ID and secret key
         res.cookie("token",token,{
             httpOnly:true, // Making the cookie HTTP only to prevent client-side access
             samesite:true, // Preventing CSRF attacks
