@@ -27,3 +27,20 @@ export const delteLikeObject = async (id)=>{
     })
 
 }
+
+export const findLikedUser = async (id)=>{
+       return await likesModel.find({
+        postId:id
+       })
+       .select("-postId")////
+       .populate("userId","username profilePic ")/////
+
+    //    let likedUserIds = likeObjects.map((elem)=>{
+        
+        
+    //     return elem.userId
+    //    })
+    //    return likedUserIds
+       
+       
+}

@@ -1,11 +1,85 @@
 import uploadImage from "../services/storage.service.js";
 import { createPost } from "../DAO/post.dao.js";
-import {v4 as v4Id } from "uuid";
+import {stringify, v4 as v4Id } from "uuid";
 import { generateCaption } from "../services/ai.service.js";
+import mongoose from "mongoose";
+
+
 
 export const uploadPost = async ( req , res )=>{
  
 let {mentions}= req.body;
+
+
+// mention section validation
+
+// // let mentionParse = JSON.parse(mentions);//doing this is wrong , we should check whether the input is not string or not , when the input is empty it will try to parse that too and the input which are in invalid format
+// if(mentions && typeof mentions === "string"){// if mention exist then check if it is string type or not
+//    try{
+//       console.log(mentions);
+//       mentions=  JSON.parse(mentions) // if string then convert it in object type
+//       console.log(mentions);
+
+//       // mentions.forEach((id)=>{
+//       //   if( !mongoose.Type.ObjectId.isValid(id)){ 
+//       //    // return res.status(400).json({
+//       //    //    message:"invalid id is passed"
+//       //    // })
+//       //    console.log(id);
+         
+//       //   }
+//       // })
+      
+      
+//    }catch(err){// if it couldn't convert in object then err
+//       return res.status(400).json({
+//          message:"invalid mention input"
+//       })
+//    }
+// }else{
+//    return res.status(400).json({
+//       message:"enter something in mention"
+//    })
+// }
+
+// console.log("",typeof(""))
+// if(mentions || mentions != ""){
+//    console.log(mentions , typeof mentions)  //-- pura string format ma att aha 
+// try{
+//    // ye blank space ko empty string smjega aur parse ke time wo error throw kr dega
+//    let mentionData = JSON.parse(mentions) 
+// console.log(mentionData, typeof mentionData)  // string se js object format ma convert krta ha
+
+// //input data's (id) verifications
+// mentionData.forEach(element => {
+//    let valid = mongoose.Types.ObjectId.isValid(element)
+   
+//    if(!valid ){
+//       return res.status(400).json({
+//          message:"invalid mention's input"
+//       })
+//    } 
+// });
+// }catch(error){
+//    return res.status(400).json({
+//       message: "mention's validation fail",
+//       error:error
+//    })
+// }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let file = await uploadImage(req.file.buffer,v4Id())
 let aiCaption = await generateCaption(req.file) 

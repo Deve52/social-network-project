@@ -36,6 +36,10 @@ Q2. Imagekit ko kese pata ke image ane wale ha ya video ya kuch aur
 A2. wo file ka MIME type check krte haan jaise .mp3 song ka MIME type hoga audio/mp3
 
 
+Q3. populate() and select( ) ?????????
+
+Q4. mention error handling nahi ho rahe!
+
 
 
 
@@ -47,3 +51,32 @@ logic
 //req.body - when you pass the data in the body(alot of data generally authentication)
 //req.query - when you pass the parameter!
 //req.params - when you pass a specific data with the url like id or something!
+
+
+
+MENTION VALIDATION LOGIC
+expected input in mention
+1.  
+2. "12invalidId23kdjsb9"❌ we should give id in array even if it's single
+3.  12invalidId23kdjsb9❌
+4. ["12invalidId23kdjsb9","1322invalidId23kd4d9"]
+5. "1232ValidId2322khkjj9"
+6. 1232ValidId2322khkjj9❌
+7. ["1232ValidId2322khkjj9","5532ValidId2322kgah9"]
+
+
+
+mention ✅ - express hamesa koi array ma agar ek cheez ha tho usma apne taraf se brackets laga deta ha❌  not for req.params , only for req.query and form data(specific type) 
+ID'S STRING MA HE STORE HO RAHE HA!
+1. check if mention exist or not? - it shouldn't be null or undefined
+then
+
+2. id's should be in string ???????????
+
+{{{{[ stringy to json ]}}}}
+
+3. noW check if all id present in it is valid or not 
+
+  mention ma forEach  ka loop lagaynge aur res share kr denge agar galat valid false hua tho
+
+

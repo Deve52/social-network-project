@@ -1,5 +1,5 @@
 import likesModel from "../models/likes.model.js";
-import { createLike, alreadyLikeOrNot, delteLikeObject } from "../DAO/like.dao.js";
+import { createLike, alreadyLikeOrNot, delteLikeObject, findLikedUser } from "../DAO/like.dao.js";
 import { findOnePost, increementLike, decreementLike, checkPost } from "../DAO/post.dao.js";
 import eventEmitter from "../utils/listener.js";
 
@@ -35,18 +35,6 @@ export const likeController = async (req, res) => {
   let post = await findOnePost(isPostPresent)//post found
 
 
-  // if(isLiked){
-
-  //   // await decreementLike(post._id)
-
-  // }else{
-  //   // await increementLike(post._id)
-  // }
-
-
-
-
-
   if (isLiked) {
     eventEmitter.emit("disliked", post._id)// it takes name and argument
 
@@ -69,3 +57,20 @@ export const likeController = async (req, res) => {
 
   });
 };
+
+
+export const allLikeController = async (req,res) => {
+   let {postId} = req.params
+
+  
+   let allLikes = await findLikedUser(postId)
+   
+
+
+   return res.status(200).json({
+    message:"Fetched the like users",
+    
+    allLikes
+   })
+
+}

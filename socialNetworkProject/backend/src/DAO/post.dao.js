@@ -29,3 +29,5 @@ export const increementLike = async(id)=>{
 export const decreementLike = async(id)=>{
    return await postModel.updateOne({_id: id},{$inc: {likeCount:-1}})
 }
+
+
