@@ -38,8 +38,10 @@ A2. wo file ka MIME type check krte haan jaise .mp3 song ka MIME type hoga audio
 
 Q3. populate() and select( ) ?????????
 
-Q4. mention error handling nahi ho rahe!
+Q4. mention ke error handling nahi ho rahe!
 
+Q5. mongoose.Type.ObjectID.isValid(id) => this tells if the id is valid object id or not but it didn't verify what type of id is it?
+    In fetch all post comments, i share an id and even if i share a userId it will give result with empty array.
 
 
 
@@ -54,7 +56,9 @@ logic
 
 
 
-MENTION VALIDATION LOGIC
+MENTION VALIDATION LOGIC---
+
+
 expected input in mention
 1.  
 2. "12invalidId23kdjsb9"❌ we should give id in array even if it's single

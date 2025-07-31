@@ -1,5 +1,5 @@
 import uploadImage from "../services/storage.service.js";
-import { createPost } from "../DAO/post.dao.js";
+import { createPost, getPostsDao } from "../DAO/post.dao.js";
 import {stringify, v4 as v4Id } from "uuid";
 import { generateCaption } from "../services/ai.service.js";
 import mongoose from "mongoose";
@@ -9,6 +9,11 @@ import mongoose from "mongoose";
 export const uploadPost = async ( req , res )=>{
  
 let {mentions}= req.body;
+
+console.log(mentions);
+console.log(Array.isArray(mentions));
+
+
 
 
 // mention section validation
@@ -70,19 +75,11 @@ let {mentions}= req.body;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-let file = await uploadImage(req.file.buffer,v4Id())
-let aiCaption = await generateCaption(req.file) 
+let [file , aiCaption]= await Promise.all([// these both will work simultaneously , saving our time
+    uploadImage(req.file.buffer,v4Id())
+   , generateCaption(req.file) 
+])
+   
 
  if(!file) {
     return res.status(500).json({
@@ -99,4 +96,14 @@ let aiCaption = await generateCaption(req.file)
     post
  })   
     
+}
+
+export const getposts = async (req, res)=>{
+   let {skip, limit} = req.query;
+   let posts = await getPostsDao(skip , limit && limit<=20 ? limit : 20 )
+
+   return res.status(200).json({
+      message:"fetched post",
+      posts
+   })
 }

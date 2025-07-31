@@ -26,8 +26,16 @@ export const increementLike = async(id)=>{
    //this format is better than likeCount: likeCount+1 something like that since here we are fetching the likeCount data before updating it
    //in new format we are updating it without fetching it.
 }
+
 export const decreementLike = async(id)=>{
    return await postModel.updateOne({_id: id},{$inc: {likeCount:-1}})
 }
 
+export const getPostsDao= async(skip=0, limit=10)=>{
+    return await postModel
+    .find()
+    .sort({createdAt:-1})
+    .skip(skip)
+    .limit(limit)
+}
 
