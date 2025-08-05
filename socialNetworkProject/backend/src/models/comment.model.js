@@ -14,7 +14,11 @@ let commentSchema = new mongoose.Schema({
     comment:{
         type: String,
         required: true,
-
+    },
+    parentId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"comment",
+        default: null
     }
 }, {
     timestamps: true

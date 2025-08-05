@@ -128,6 +128,11 @@ export const commentValidator = [
   .custom(id=>mongoose.Types.ObjectId.isValid(id))
   .withMessage("Post Id is not a valid Id"),
 
+  body("parentId")
+  .optional()
+  .custom(value=>mongoose.Types.ObjectId.isValid(value))
+  .withMessage("Given parent ID is invalid."),
+  
   body("comment")
   .trim()
   .isLength({min: 1, max:500})
@@ -164,4 +169,22 @@ export const allCommentsValidator= [
     }
     next()
   }
+]
+
+export const repliesCommentsValidator =[
+    param("commentId")
+    .notEmpty()
+    .withMessage("enter the comment id")
+    .custom(id=>mongoose.Types.ObjectId.isValid(id))
+    .withMessage("The ID is invalid"),
+
+    (req,res,next)=>{
+       let error= validationResult(req)
+       if(!error.isEmpty()){
+        return res.status(400).json({
+            error: error.array()
+        })
+       }
+       next()
+    }
 ]

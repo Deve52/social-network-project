@@ -1,13 +1,13 @@
-import { createCommentDao , findComments } from "../DAO/comment.dao.js"
+import { createCommentDao , findComments, findReplies } from "../DAO/comment.dao.js"
 
 export const createCommentController= async(req,res)=>{
     // console.log(req.params);
     
     let {postId} = req.params
     let userId = req.user._id
-    let {comment} = req.body
+    let {comment,parentId} = req.body
 
-    let postComment = await createCommentDao({postId,userId,comment})
+    let postComment = await createCommentDao({postId,userId,comment,parentId})
 
     return res.status(201).json({
         message: "comment added",
@@ -19,10 +19,22 @@ export const getCommentsController = async (req ,res) => {
    
     let {postId} = req.params
 
-    let allComments = await findComments(postId);
+    let allComments = await findComments({postId});
 
     return res.status(200).json({
         message:"post comments are fetched",
         allComments
+    })
+}
+
+export const getRepliesController = async (req, res)=>{
+    let {commentId} = req.params
+    console.log(commentId);
+    
+    let comments = await findReplies({commentId})
+
+    return res.status(200).json({
+        message: "the replies are fetched",
+        comments
     })
 }

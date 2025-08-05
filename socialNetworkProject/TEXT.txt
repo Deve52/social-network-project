@@ -40,9 +40,11 @@ Q3. populate() and select( ) ?????????
 
 Q4. mention ke error handling nahi ho rahe!
 
-Q5. mongoose.Type.ObjectID.isValid(id) => this tells if the id is valid object id or not but it didn't verify what type of id is it?
-    In fetch all post comments, i share an id and even if i share a userId it will give result with empty array.
+Q5. mongoose.Type.ObjectID.isValid(id) => this tells if the id is valid object id or not but it didn't verify what type of id is it?In fetch all post comments, i share an id and even if i share a userId it will give result with empty array.
+A5. we can handle it but it requires resource , it is not important to handle though since the data will comes from frontend and we will not share id of different reference.
 
+Q6. Shouldn't we give post id in the routes to make it more certain about the task and on whom we are doing the operation.
+A6. No we don't have to give the exact detail of what a route is doing. the structure should make it clear it's operation. 
 
 
 
@@ -57,7 +59,7 @@ logic
 
 
 MENTION VALIDATION LOGIC---
-
+"The secret isn't to anticipate every possible bad input. The secret is to build a strong gatekeeper that only allows good input to pass through."
 
 expected input in mention
 1.  

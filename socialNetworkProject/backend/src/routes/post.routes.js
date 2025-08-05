@@ -1,9 +1,9 @@
 import express from 'express';
 import multer from 'multer';
-import { userMiddleware,getPostsValidator, validatePost, mentionValidator, commentValidator, allCommentsValidator } from "../middleware/post.middleware.js";
+import { userMiddleware,getPostsValidator, validatePost, mentionValidator, commentValidator, allCommentsValidator, repliesCommentsValidator } from "../middleware/post.middleware.js";
 import { getposts, uploadPost } from '../controllers/post.controller.js';
 import { likeController, allLikeController } from "../controllers/like.controller.js";
-import { createCommentController, getCommentsController } from '../controllers/comment.controller.js';
+import { createCommentController, getCommentsController, getRepliesController } from '../controllers/comment.controller.js';
 
 
 let upload = multer({storage: multer.memoryStorage()});
@@ -21,10 +21,11 @@ router.get("/:postId/likes",[userMiddleware,validatePost],allLikeController)//in
 
 router.get("/" ,[getPostsValidator, userMiddleware],getposts)
 
-router.post("/:postId/comment",[commentValidator, userMiddleware], createCommentController)
+router.post("/:postId/comment",[commentValidator, userMiddleware], createCommentController)//create a comment on a post
 
-router.get("/:postId/Comments",[allCommentsValidator,userMiddleware],getCommentsController)
+router.get("/:postId/Comments",[allCommentsValidator,userMiddleware],getCommentsController)// all comments of a posts
 
+router.get("/:commentId/replies",[repliesCommentsValidator,userMiddleware],getRepliesController) // threaded comment
 
 
 
