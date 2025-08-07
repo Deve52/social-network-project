@@ -1,6 +1,8 @@
 import postModel from '../models/post.model.js';
 
 export const createPost = async (userId, caption, mentions, imageUrl) => {
+    console.log(typeof mentions);
+    
    return await postModel.create({
         user: userId,
         caption,
@@ -37,5 +39,10 @@ export const getPostsDao= async(skip=0, limit=10)=>{
     .sort({createdAt:-1})
     .skip(skip)
     .limit(limit)
+}
+
+export const increementPostReplyCount = async(id)=>{
+    console.log(id);
+    return await postModel.findOneAndUpdate({_id: id},{$inc: {replyCount:+1} })
 }
 

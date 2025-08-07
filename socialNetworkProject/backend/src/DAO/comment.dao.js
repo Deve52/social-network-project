@@ -27,3 +27,7 @@ export const findReplies = async ({commentId})=>{
     }).
     limit(5)
 }
+
+export const increementCommentReplyCount = async (id)=>{
+    return commentModel.findOneAndUpdate({_id:id},{$inc:{replyCount:1}})
+}

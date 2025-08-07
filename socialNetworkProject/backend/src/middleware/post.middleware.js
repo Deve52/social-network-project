@@ -72,54 +72,53 @@ export const validatePost = [
 
 ]
 
-export const mentionValidator = [
+// export const mentionValidator = [
     
     
-    //1. sanitize (stringfy to parse).
-    //2. check if it's an array.
-    //3. check the id's inside the array.
+//     //1. sanitize (stringfy to parse).
+//     //2. check if it's an array.
+//     //3. check the id's inside the array.
 
-    body('mentions')
-    .optional()
-        .custom((data) => {
-             let parsedData = data
-            while(typeof data === "string") {
-                try {
-                     parsedData = JSON.parse(parsedData);
-                } catch (e) {
-                    break;//if it's not a string type anymore
-                }
-            }
-            console.log(parsedData);
-            console.log(typeof parsedData)
+//     body('mentions')
+//         .custom((data) => {
+//             console.log(data);
+//             console.log(typeof data)
             
-            return parsedData
+//              let parsedData = data
+//             while(typeof parsedData === "string") {
+//                 try {
+//                      parsedData = JSON.parse(parsedData);
+//                 } catch (e) {
+//                     break;//if it's not a string type anymore
+//                 }
+//             }            
+//             return parsedData
             
-        })
-        .isArray()
-        .withMessage(" Mentions must be an array ")
-        .custom((parsedData)=>{
+//         })
+//         .isArray()
+//         .withMessage(" Mentions must be an array ")
+//         .custom((parsedData)=>{
 
-           let check= parsedData.every(id=>mongoose.Types.ObjectId.isValid(id))
-           if(!check){
-            throw new Error("Id in mention is not valid")
-           }
-           return true //if check is true
-        }),
+//            let check= parsedData.every(id=>mongoose.Types.ObjectId.isValid(id))
+//            if(!check){
+//             throw new Error("Id in mention is not valid")
+//            }
+//            return true //if check is true
+//         }),
 
-        (req,res,next)=>{
-            let error = validationResult(req)
-            if(!error.isEmpty()){
-                return res.status(400).json({
-                    error:error.array()
-                })
+//         (req,res,next)=>{
+//             let error = validationResult(req)
+//             if(!error.isEmpty()){
+//                 return res.status(400).json({
+//                     error:error.array()
+//                 })
                 
          
-            }
-            next()
-        }
+//             }
+//             next()
+//         }
 
-]
+// ]
 
 export const commentValidator = [
   param("postId")

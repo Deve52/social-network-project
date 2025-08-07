@@ -1,4 +1,5 @@
 import { createCommentDao , findComments, findReplies } from "../DAO/comment.dao.js"
+import eventEmitter from "../utils/listener.js"
 
 export const createCommentController= async(req,res)=>{
     // console.log(req.params);
@@ -7,7 +8,17 @@ export const createCommentController= async(req,res)=>{
     let userId = req.user._id
     let {comment,parentId} = req.body
 
+    
     let postComment = await createCommentDao({postId,userId,comment,parentId})
+
+    if(!parentId){//parentId is null
+       
+        eventEmitter.emit("increementPostReplyCount", postId)
+    }else{ //parentId is something
+        
+        eventEmitter.emit("increementPostReplyCount", postId)
+        eventEmitter.emit("increementCommentReplyCount",parentId)
+    }
 
     return res.status(201).json({
         message: "comment added",
@@ -37,4 +48,9 @@ export const getRepliesController = async (req, res)=>{
         message: "the replies are fetched",
         comments
     })
+}
+
+export const likeComment = async (req,res)=>{
+    let {commentId}=req.params
+    let userId = req.user._id
 }

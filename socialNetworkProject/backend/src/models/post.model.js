@@ -17,14 +17,18 @@ const postSchema = new mongoose.Schema({
         required: true,
     },
     mentions:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"user"
+       type:mongoose.Schema.Types.ObjectId,
+       ref:"user"
     }],
     
     likeCount: {
         type: Number,
         default : 0
 
+    }, 
+    replyCount:{
+       type:Number,
+       default:0 
     }
 
 },{

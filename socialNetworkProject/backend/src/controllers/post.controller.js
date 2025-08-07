@@ -3,17 +3,22 @@ import { createPost, getPostsDao } from "../DAO/post.dao.js";
 import {stringify, v4 as v4Id } from "uuid";
 import { generateCaption } from "../services/ai.service.js";
 import mongoose from "mongoose";
+import { json } from "express";
 
 
 
 export const uploadPost = async ( req , res )=>{
  
-let {mentions}= req.body;
-
+let {mentions} = req.body;
 console.log(mentions);
-console.log(Array.isArray(mentions));
+console.log(typeof mentions)
+
+let mentionString = JSON.parse(mentions)
+console.log(mentionString);
+console.log(typeof mentionString);
 
 
+// console.log(Array.isArray(mentions));
 
 
 // mention section validation
@@ -89,7 +94,7 @@ let [file , aiCaption]= await Promise.all([// these both will work simultaneousl
     // console.log(req.user.id)
     let userId= req.user._id;// middleware se token ke through jo user mila usma uki id "id" ma save ha na ke "_id" maine he id ma save kiya tha .
     
-    let post = await createPost(userId,aiCaption,mentions,file.url)
+    let post = await createPost(userId,aiCaption,mentionString,file.url)
 
  res.status(201).json({
     message:"post created",
