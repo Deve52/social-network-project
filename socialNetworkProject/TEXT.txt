@@ -22,8 +22,6 @@ steps to initalize a project
 
 
 
-
-
 DOUBT:
 Q1. jab bohut  sare router.use wala middleware banaynge tho kuch routes ke 2 middle ware chlenge jaise default    wala aur coustome tho time aur efficiency ka issue hoga?
 
