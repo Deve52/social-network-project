@@ -33,7 +33,7 @@ export const generateCaption = async (file) => {
       systemInstruction:  // it tells how the model should behave, we can shape a model with systemInstruction.// alag se folder banta ha boohut imortant ha ye (rail guarding ma help hote ha mtlb ai ko batana ke kya nahi krna ha!)
         `
       give one output which should be long more than 20 words.
-      use can use many hashtags and emojies.
+      can use many hashtags and emojies.
       it is caption of instagram post.
       `
 

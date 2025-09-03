@@ -6,7 +6,7 @@ import { likeController, allLikeController } from "../controllers/like.controlle
 import { createCommentController, getCommentsController, getRepliesController } from '../controllers/comment.controller.js';
 
 
-let upload = multer({storage: multer.memoryStorage()});
+let upload = multer({storage: multer.memoryStorage()});// RAM ma store kara ha.
 
 
 const router = express.Router();

@@ -84,3 +84,38 @@ then
   mention ma forEach  ka loop lagaynge aur res share kr denge agar galat valid false hua tho
 
 
+
+
+
+
+
+chat 
+
+//one way communication wale text he aynge 
+
+{
+sender : deveID
+reciever: amitID
+}
+
+
+{
+  sender: amitID,
+  reciever: deveID
+}
+
+
+two way communciation text
+
+{
+  $or:[
+    {
+      sender: amitID,//"6882b56253ca39e47f6c6df4"
+      reciever: deveID//"687ebac7c07f5addf0e19cf0"
+    },
+    {
+      sender: deveID,//"687ebac7c07f5addf0e19cf0"
+      reciever:amitID//"6882b56253ca39e47f6c6df4"
+    }
+  ]
+}

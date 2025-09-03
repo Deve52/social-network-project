@@ -10,13 +10,12 @@ import { json } from "express";
 export const uploadPost = async ( req , res )=>{
  
 let {mentions} = req.body;
-console.log(mentions);
-console.log(typeof mentions)
+// console.log(mentions);
+// console.log(typeof mentions)
 
 let mentionString = JSON.parse(mentions)
-console.log(mentionString);
-console.log(typeof mentionString);
-
+// console.log(mentionString);
+// console.log(typeof mentionString);
 
 // console.log(Array.isArray(mentions));
 
@@ -77,7 +76,6 @@ console.log(typeof mentionString);
 //    })
 // }
 // }
-
 
 
 let [file , aiCaption]= await Promise.all([// these both will work simultaneously , saving our time
